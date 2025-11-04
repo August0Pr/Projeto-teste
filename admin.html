@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VBL — Admin</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* pequenas regras locais de admin */
+    .login-area input { width: 180px; margin-right:8px; background:#071025; border:1px solid rgba(255,255,255,0.03); color:#fff; padding:10px; border-radius:10px; }
+    .login-area .btn { padding:8px 12px; border-radius:10px; font-weight:700; cursor:pointer; }
+    #loginMsg{color:var(--muted); margin-left:8px}
+    .locked input, .locked button { opacity: 0.6; pointer-events: none; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">VOLLEYBALL <span class="accent">LEGENDS</span></div>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="ranking.html" class="nav-link">Ranking</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container" style="margin-top:28px">
+      <div class="card">
+        <h2 style="margin-top:0">Painel Administrativo</h2>
+        <p style="color:var(--muted)">Faça login para gerenciar jogadores. Edições são salvas no banco local (IndexedDB).</p>
+
+        <div id="loginArea" class="login-area" style="margin-top:12px; display:flex; align-items:center; gap:8px; flex-wrap:wrap">
+          <input id="loginUser" placeholder="Usuário" autocomplete="username" />
+          <input id="loginPass" placeholder="Senha" type="password" autocomplete="current-password" />
+          <button id="btnLogin" class="btn primary">Entrar</button>
+          <button id="btnLogout" class="btn ghost" style="display:none">Logout</button>
+          <div id="loginMsg">Informe credenciais para desbloquear o painel</div>
+        </div>
+
+        <hr style="margin:18px 0">
+
+        <div id="adminArea" class="locked" aria-disabled="true">
+          <div class="form-grid" style="margin-bottom:14px">
+            <input id="pName" placeholder="Nome do jogador" />
+            <input id="pScore" placeholder="Pontuação" type="number" />
+            <input id="pTeam" placeholder="Time" />
+            <button id="btnAdd" class="btn primary" disabled>Adicionar</button>
+          </div>
+
+          <table id="adminTable">
+            <thead>
+              <tr><th>#</th><th>Nome</th><th>Pontuação</th><th>Time</th><th>Ações</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© VBL Legends — Admin</div>
+  </footer>
+
+  <script src="js/db.js"></script>
+  <script src="js/js/js/admin.js"></script>
+</body>
+</html>
